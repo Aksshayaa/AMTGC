@@ -1,0 +1,9 @@
+# iverilog -g2005 -s tb_pedestrian_integration rtl/*.v testbench/pedestrian_integration_tb.v
+PASS: Junction A received pedestrian grant
+PASS: Junction B received pedestrian grant
+INFO: Simultaneous request winner: A
+PASS: Next crossing grant is B
+PASS: Emergency suppresses pedestrian grants
+ALL PEDESTRIAN INTEGRATION TESTS PASSED
+testbench/pedestrian_integration_tb.v:224: $finish called at 350000 (1ps)
+# exit=0

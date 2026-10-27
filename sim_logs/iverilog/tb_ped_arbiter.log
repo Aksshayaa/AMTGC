@@ -1,0 +1,14 @@
+# iverilog -g2005 -s tb_ped_arbiter rtl/*.v testbench/ped_arbiter_tb.v
+t=0 A_req=0 B_req=0 A_grant=0 B_grant=0
+t=20000 A_req=1 B_req=0 A_grant=0 B_grant=0
+FAIL: A was not granted
+t=35000 A_req=1 B_req=0 A_grant=1 B_grant=0
+t=40000 A_req=0 B_req=1 A_grant=1 B_grant=0
+FAIL: B was not granted
+t=60000 A_req=1 B_req=1 A_grant=1 B_grant=0
+PASS: Only one junction granted
+t=70000 A_req=1 B_req=1 A_grant=0 B_grant=0
+PASS: Grants disabled during emergency
+Pedestrian arbiter test sequence completed
+testbench/ped_arbiter_tb.v:94: $finish called at 81000 (1ps)
+# exit=0

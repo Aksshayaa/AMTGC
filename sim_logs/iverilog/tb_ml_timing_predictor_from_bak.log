@@ -1,0 +1,12 @@
+# iverilog -g2005 -s tb_ml_timing_predictor rtl/ml_timing_predictor.v testbench/ml_timing_predictor_tb.v.bak  (run from the .bak copy; file not restored)
+PASS: NS=0 EW=0 class=00 duration=5
+PASS: NS=1 EW=7 class=01 duration=8
+PASS: NS=2 EW=2 class=00 duration=5
+PASS: NS=3 EW=4 class=01 duration=8
+PASS: NS=4 EW=4 class=10 duration=12
+PASS: NS=5 EW=2 class=01 duration=8
+PASS: NS=5 EW=3 class=10 duration=12
+PASS: NS=6 EW=0 class=10 duration=12
+PASS: NS=7 EW=7 class=10 duration=12
+ALL ML PREDICTOR TESTS PASSED
+testbench/ml_timing_predictor_tb.v.bak:67: $finish called at 90000 (1ps)

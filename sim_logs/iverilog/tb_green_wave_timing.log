@@ -1,0 +1,12 @@
+# iverilog -g2005 -s tb_green_wave_timing rtl/*.v testbench/green_wave_timing_tb.v
+======================================
+ GREEN-WAVE TIMING TEST
+ Configured WAVE_DELAY = 5 clock cycles
+======================================
+A NS green-start cycle = 4
+B NS green-start cycle = 9
+Measured start-to-start delay = 5 cycles
+PASS: Green-wave delay is within 5-6 cycles
+GREEN-WAVE TIMING TEST PASSED
+testbench/green_wave_timing_tb.v:122: $finish called at 3030000 (1ps)
+# exit=0

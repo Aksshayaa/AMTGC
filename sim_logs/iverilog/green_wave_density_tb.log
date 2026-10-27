@@ -1,0 +1,38 @@
+# iverilog -g2005 -s green_wave_density_tb rtl/*.v testbench/green_wave_density_tb.v
+==========================================
+ AMTGC GREEN-WAVE DENSITY TEST
+ WAVE_DELAY = 5
+==========================================
+
+Test 1: A(NS,EW)=(1,1), B(NS,EW)=(1,1)
+  A NS green-start detected at cycle 3
+  Measured A-start to B-green delay: 5 clock cycles
+  PASS: B NS green followed A's start.
+
+Test 2: A(NS,EW)=(3,2), B(NS,EW)=(4,1)
+  A NS green-start detected at cycle 3
+  Measured A-start to B-green delay: 5 clock cycles
+  PASS: B NS green followed A's start.
+
+Test 3: A(NS,EW)=(7,0), B(NS,EW)=(2,6)
+  A NS green-start detected at cycle 3
+  Measured A-start to B-green delay: 5 clock cycles
+  PASS: B NS green followed A's start.
+
+Test 4: A(NS,EW)=(0,7), B(NS,EW)=(6,3)
+  A NS green-start detected at cycle 3
+  Measured A-start to B-green delay: 5 clock cycles
+  PASS: B NS green followed A's start.
+
+Test 5: A(NS,EW)=(6,5), B(NS,EW)=(7,7)
+  A NS green-start detected at cycle 3
+  Measured A-start to B-green delay: 5 clock cycles
+  PASS: B NS green followed A's start.
+
+==========================================
+Density combinations tested: 5
+Errors: 0
+GREEN-WAVE DENSITY TEST PASSED
+==========================================
+testbench/green_wave_density_tb.v:239: $finish called at 650000 (1ps)
+# exit=0

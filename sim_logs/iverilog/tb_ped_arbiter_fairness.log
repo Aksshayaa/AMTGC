@@ -1,0 +1,7 @@
+# iverilog -g2005 -s tb_ped_arbiter_fairness rtl/*.v testbench/ped_arbiter_fairness_tb.v
+PASS: Initial simultaneous requests served A then B
+PASS: Priority alternates across completed services
+INFO: Arbiter returned to idle
+ALL PEDESTRIAN FAIRNESS TESTS PASSED
+testbench/ped_arbiter_fairness_tb.v:116: $finish called at 150000 (1ps)
+# exit=0

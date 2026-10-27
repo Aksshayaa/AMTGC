@@ -1,0 +1,158 @@
+# iverilog -g2005 -s tb_amtgc_top rtl/*.v testbench/amtgc_top_tb.v
+==============================================
+ AMTGC TOP-LEVEL INTEGRATION TEST
+==============================================
+t=0 reset=1 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+INFO: Reset released at time 30000
+t=30000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=55000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=105000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=135000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=165000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=185000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=195000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=215000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=245000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=275000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=295000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=305000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=325000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=335000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=385000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=415000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=445000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=465000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=475000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=495000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=525000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=555000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=575000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=585000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=605000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=615000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=665000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=695000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=725000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=745000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=755000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=775000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=805000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=835000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=855000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=865000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=885000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=895000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=945000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=975000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1005000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1025000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1035000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1055000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1085000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=1115000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=1135000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=1145000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=1165000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1175000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1225000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1255000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1285000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1305000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1315000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1335000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1365000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=1395000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=1415000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=1425000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=1445000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1455000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1505000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1535000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1565000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1585000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1595000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1615000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1645000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=1675000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=1695000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=1705000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=1725000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1735000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1785000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1815000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1845000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1865000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1875000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1895000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=1925000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=1955000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=1975000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=1985000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=2005000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2015000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2065000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2095000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2125000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2145000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2155000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2175000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2205000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=2235000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=2255000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=2265000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=2285000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2295000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2345000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2375000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2405000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2425000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2435000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2455000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2485000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=2515000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=2535000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=2545000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=2565000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2575000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2625000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2655000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2685000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2705000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2715000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2735000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2765000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=2795000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=2815000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=2825000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=2845000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2855000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2905000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2935000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2965000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2985000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=2995000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=3015000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+PASS: Junction A NS green-start signal observed
+PASS: Junction B NS green observed
+INFO: Asserting emergency override at time 3030000
+t=3030000 reset=0 emergency=1 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+PASS: Both junctions entered all-red during emergency
+INFO: Emergency override released at time 3050000
+t=3050000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=3075000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=3125000 reset=0 emergency=0 A_NS=001 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=3155000 reset=0 emergency=0 A_NS=010 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=3185000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=001 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=3205000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=3215000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=010 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=3235000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+t=3265000 reset=0 emergency=0 A_NS=100 A_EW=001 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=3295000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=001 ped_grant_A=0 ped_grant_B=0
+t=3315000 reset=0 emergency=0 A_NS=100 A_EW=010 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=3325000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=010 ped_grant_A=0 ped_grant_B=0
+t=3345000 reset=0 emergency=0 A_NS=100 A_EW=100 B_NS=100 B_EW=100 ped_grant_A=0 ped_grant_B=0
+----------------------------------------------
+ALL AMTGC TOP-LEVEL TESTS PASSED
+==============================================
+testbench/amtgc_top_tb.v:218: $finish called at 3350000 (1ps)
+# exit=0

@@ -1,0 +1,18 @@
+# iverilog -g2005 -s tb_green_wave_coordinator rtl/*.v testbench/green_wave_coordinator_tb.v
+t=0 A_start=0 B_ready=0 permit=x emergency=0
+t=5000 A_start=0 B_ready=0 permit=0 emergency=0
+t=30000 A_start=1 B_ready=0 permit=0 emergency=0
+t=40000 A_start=0 B_ready=0 permit=0 emergency=0
+t=110000 A_start=0 B_ready=1 permit=0 emergency=0
+t=115000 A_start=0 B_ready=1 permit=1 emergency=0
+PASS: Permit issued when B was ready
+t=125000 A_start=0 B_ready=1 permit=0 emergency=0
+PASS: Permit is a one-cycle pulse
+t=130000 A_start=0 B_ready=0 permit=0 emergency=0
+t=140000 A_start=1 B_ready=0 permit=0 emergency=0
+t=150000 A_start=0 B_ready=0 permit=0 emergency=1
+PASS: Emergency suppresses permit
+t=160000 A_start=0 B_ready=0 permit=0 emergency=0
+ALL GREEN-WAVE TESTS PASSED
+testbench/green_wave_coordinator_tb.v:104: $finish called at 180000 (1ps)
+# exit=0

@@ -1,0 +1,12 @@
+# iverilog -g2005 -s tb_generic_timer rtl/*.v testbench/generic_timer_tb.v
+Time=0 reset=1 start=0 duration=    4 active=x done=x
+Time=5000 reset=1 start=0 duration=    4 active=0 done=0
+Time=20000 reset=0 start=1 duration=    4 active=0 done=0
+Time=25000 reset=0 start=1 duration=    4 active=1 done=0
+Time=30000 reset=0 start=0 duration=    4 active=1 done=0
+PASS: Timer completed.
+Simulation time = 65000
+Time=65000 reset=0 start=0 duration=    4 active=0 done=1
+testbench/generic_timer_tb.v:46: $finish called at 75000 (1ps)
+Time=75000 reset=0 start=0 duration=    4 active=0 done=0
+# exit=0

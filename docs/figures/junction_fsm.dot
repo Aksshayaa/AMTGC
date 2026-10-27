@@ -1,0 +1,28 @@
+// Generated from rtl/junction_controller.v (state encodings and transition conditions as coded).
+digraph junction_fsm {
+  rankdir=TB; bgcolor="white"; pad=0.3; nodesep=1.4; ranksep=0.55;
+  node [shape=circle, style=filled, fontname="Helvetica", fontsize=11, width=1.35, fixedsize=true];
+  edge [fontname="Helvetica", fontsize=9];
+  INIT [label="ALL_RED_INIT\n3'd0\nNS=R  EW=R", fillcolor="#e5e7eb"];
+  NSG  [label="NS_GREEN_ST\n3'd1\nNS=G  EW=R", fillcolor="#bbf7d0"];
+  NSY  [label="NS_YELLOW_ST\n3'd2\nNS=Y  EW=R", fillcolor="#fde68a"];
+  R2E  [label="RED_TO_EW\n3'd3\nNS=R  EW=R", fillcolor="#fecaca"];
+  EWG  [label="EW_GREEN_ST\n3'd4\nNS=R  EW=G", fillcolor="#bbf7d0"];
+  EWY  [label="EW_YELLOW_ST\n3'd5\nNS=R  EW=Y", fillcolor="#fde68a"];
+  R2N  [label="RED_TO_NS\n3'd6\nNS=R  EW=R", fillcolor="#fecaca"];
+  INIT -> NSG [label="pc >= ALL_RED_CYCLES\n&& ns_green_enable\n/ ns_green_start<=1, dur<=ns_duration"];
+  NSG -> NSY [label="pc == dur-1\n/ dur<=YELLOW_CYCLES"];
+  NSY -> R2E [label="pc == dur-1\n/ dur<=ALL_RED_CYCLES"];
+  R2E -> EWG [constraint=false, label="pc == dur\n/ dur<=ew_duration"];
+  EWY -> EWG [dir=back, label="pc == dur-1"];
+  R2N -> EWY [dir=back, label="pc == dur-1"];
+  R2N -> NSG [constraint=false, label="pc >= dur && ns_green_enable\n/ ns_green_start<=1"];
+  INIT -> INIT [label="count /\nwait enable"];
+  R2N -> R2N [label="count /\nwait enable"];
+  ANY [shape=box, style="rounded,filled", fillcolor="#fee2e2", fixedsize=false, width=0, label="reset || emergency_override || pedestrian_hold\n(synchronous, from ANY state; outputs also forced all-red combinationally)"];
+  {rank=same; ANY; INIT;}
+  {rank=same; NSG; R2N;}
+  {rank=same; NSY; EWY;}
+  {rank=same; R2E; EWG;}
+  ANY -> INIT [style=dashed, color="#b91c1c"];
+}

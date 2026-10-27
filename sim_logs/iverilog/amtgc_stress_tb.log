@@ -1,0 +1,29 @@
+# iverilog -g2005 -s amtgc_stress_tb rtl/*.v testbench/amtgc_stress_tb.v
+========================================
+AMTGC STRESS TEST STARTED
+========================================
+PASS: Emergency response during all-red
+INFO: Traffic phase 1 observed
+FAIL: Emergency all-red violation, time=120000
+PASS: Emergency response during phase 1
+INFO: Traffic phase 2 observed
+PASS: Emergency response during phase 2
+INFO: Traffic phase 3 observed
+PASS: Emergency response during phase 3
+INFO: Traffic phase 4 observed
+FAIL: Emergency all-red violation, time=680000
+PASS: Emergency response during phase 4
+PASS: Reset produces all-red outputs
+PASS: Repeated emergency event 1
+PASS: Repeated emergency event 2
+PASS: Repeated emergency event 3
+INFO: Running 100 randomized density samples
+----------------------------------------
+Emergency checks: 8
+Reset checks: 1
+Repeated emergencies: 3
+Random density samples: 100
+AMTGC STRESS TEST FAILED: 2 error(s)
+========================================
+testbench/amtgc_stress_tb.v:258: $finish called at 2440000 (1ps)
+# exit=0

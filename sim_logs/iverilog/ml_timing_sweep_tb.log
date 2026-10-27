@@ -1,0 +1,11 @@
+# iverilog -g2005 -s ml_timing_sweep_tb rtl/*.v testbench/ml_timing_sweep_tb.v
+====================================
+ML TIMING PREDICTOR DENSITY SWEEP
+====================================
+------------------------------------
+Density combinations tested: 64
+Errors: 0
+ML TIMING SWEEP PASSED
+====================================
+testbench/ml_timing_sweep_tb.v:103: $finish called at 64000 (1ps)
+# exit=0

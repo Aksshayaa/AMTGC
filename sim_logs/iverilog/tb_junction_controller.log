@@ -1,0 +1,24 @@
+# iverilog -g2005 -s tb_junction_controller rtl/*.v testbench/junction_controller_tb.v
+t=0 state=x NS(RYG)=100 EW(RYG)=100
+t=5000 state=0 NS(RYG)=100 EW(RYG)=100
+t=45000 state=1 NS(RYG)=001 EW(RYG)=100
+t=95000 state=2 NS(RYG)=010 EW(RYG)=100
+t=125000 state=3 NS(RYG)=100 EW(RYG)=100
+t=155000 state=4 NS(RYG)=100 EW(RYG)=001
+t=205000 state=5 NS(RYG)=100 EW(RYG)=010
+t=235000 state=6 NS(RYG)=100 EW(RYG)=100
+t=265000 state=1 NS(RYG)=001 EW(RYG)=100
+t=315000 state=2 NS(RYG)=010 EW(RYG)=100
+t=345000 state=3 NS(RYG)=100 EW(RYG)=100
+t=375000 state=4 NS(RYG)=100 EW(RYG)=001
+t=420000 state=4 NS(RYG)=100 EW(RYG)=100
+t=425000 state=0 NS(RYG)=100 EW(RYG)=100
+PASS: Emergency all-red check
+t=455000 state=1 NS(RYG)=001 EW(RYG)=100
+t=505000 state=2 NS(RYG)=010 EW(RYG)=100
+t=535000 state=3 NS(RYG)=100 EW(RYG)=100
+t=565000 state=4 NS(RYG)=100 EW(RYG)=001
+t=615000 state=5 NS(RYG)=100 EW(RYG)=010
+ALL JUNCTION CONTROLLER TESTS PASSED
+testbench/junction_controller_tb.v:97: $finish called at 630000 (1ps)
+# exit=0

@@ -1,0 +1,12 @@
+tb_generic_timer             FAIL/ERROR lines: 0
+ml_timing_sweep_tb           FAIL/ERROR lines: 0
+tb_junction_controller       FAIL/ERROR lines: 0
+tb_green_wave_coordinator    FAIL/ERROR lines: 0
+tb_ped_arbiter               FAIL/ERROR lines: 2
+tb_ped_arbiter_fairness      FAIL/ERROR lines: 0
+tb_amtgc_top                 FAIL/ERROR lines: 0
+tb_green_wave_timing         FAIL/ERROR lines: 0
+green_wave_density_tb        FAIL/ERROR lines: 0
+tb_pedestrian_integration    FAIL/ERROR lines: 0
+amtgc_stress_tb              FAIL/ERROR lines: 2
+(testbench/ml_timing_predictor_tb.v skipped: empty file, BUG-01)

@@ -1,0 +1,32 @@
+// Generated from rtl/amtgc_top.v instantiations and port connections.
+// Note: emergency_override also drives both junction_controller instances and green_wave_coordinator directly (omitted for readability).
+digraph amtgc_top {
+  rankdir=LR; bgcolor="white"; pad=0.2; nodesep=0.35; ranksep=0.8; compound=true;
+  node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#f8fafc"];
+  edge [fontname="Helvetica", fontsize=8.5];
+  in_dA [label="density_A_NS[2:0]\ndensity_A_EW[2:0]", shape=plain, style=""];
+  in_dB [label="density_B_NS[2:0]\ndensity_B_EW[2:0]", shape=plain, style=""];
+  in_ped [label="ped_req_A / ped_req_B\nped_done_A / ped_done_B", shape=plain, style=""];
+  in_em [label="emergency_override", shape=plain, style=""];
+  subgraph cluster_top {
+    label="amtgc_top  (WAVE_DELAY=5, PED_SERVICE_CYCLES=5)"; fontname="Helvetica-Bold"; fontsize=11; style="rounded"; color="#334155";
+    subgraph cluster_A { label="junction_A : junction_controller"; fontsize=10; style="rounded,filled"; fillcolor="#ecfdf5"; color="#059669";
+      pA1 [label="ns_predictor\nml_timing_predictor", fillcolor="#ede9fe"]; pA2 [label="ew_predictor\nml_timing_predictor", fillcolor="#ede9fe"];
+      fA [label="7-state FSM\n+ phase_count", fillcolor="#d1fae5"]; pA1 -> fA [label="ns_duration"]; pA2 -> fA [label="ew_duration"]; }
+    subgraph cluster_B { label="junction_B : junction_controller"; fontsize=10; style="rounded,filled"; fillcolor="#ecfdf5"; color="#059669";
+      pB1 [label="ns_predictor\nml_timing_predictor", fillcolor="#ede9fe"]; pB2 [label="ew_predictor\nml_timing_predictor", fillcolor="#ede9fe"];
+      fB [label="7-state FSM\n+ phase_count", fillcolor="#d1fae5"]; pB1 -> fB [label="ns_duration"]; pB2 -> fB [label="ew_duration"]; }
+    gw [label="wave_coordinator\ngreen_wave_coordinator", fillcolor="#dbeafe"];
+    pa [label="pedestrian_arbiter\nped_arbiter", fillcolor="#fee2e2"];
+    orp [label="ped_active =\nped_grant_A | ped_grant_B", shape=ellipse, fillcolor="#fff7ed"];
+    mask [label="Output mask:\nemergency_override || ped_active\n=> all RED, no Y/G", fillcolor="#fef3c7"];
+  }
+  out [label="A_ns/ew_{red,yellow,green}\nB_ns/ew_{red,yellow,green}\nA_ns_green_start, B_ns_green_permit\nped_grant_A, ped_grant_B", shape=plain, style=""];
+  in_dA -> pA1 [lhead=cluster_A]; in_dB -> pB1 [lhead=cluster_B];
+  in_ped -> pa; in_em -> pa; in_em -> mask;
+  fA -> gw [label="A_ns_green_start", color="#2563eb"];
+  fB -> gw [label="b_ready", color="#2563eb"];
+  gw -> fB [label="B_ns_green_permit\n(ns_green_enable)", color="#2563eb"];
+  pa -> orp; orp -> mask; orp -> fA [label="pedestrian_hold", style=dashed]; orp -> fB [label="pedestrian_hold", style=dashed]; orp -> gw [label="ORed into\nemergency input", style=dashed];
+  fA -> mask; fB -> mask; mask -> out;
+}
