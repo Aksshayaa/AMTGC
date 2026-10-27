@@ -22,6 +22,10 @@ module tb_junction_controller;
         .emergency_override(emergency_override),
         .density_NS(density_NS),
         .density_EW(density_EW),
+        .ns_green_enable(1'b1),   // free-running junction (no green-wave gating)
+        .pedestrian_hold(1'b0),   // no pedestrian service in this unit test
+        .ns_green_start(),
+        .b_ready(),
         .ns_red(ns_red),
         .ns_yellow(ns_yellow),
         .ns_green(ns_green),

@@ -120,7 +120,7 @@ r1
 !i113 1
 R4
 vjunction_controller
-!s110 1793122883
+!s110 1793127915
 !i10b 1
 !s100 E2<QOcL0J];JK6zLATmnV0
 R1
@@ -128,21 +128,21 @@ IQKbaLe23S]eNV5M6GXSE^3
 R2
 R0
 w1792912039
-Z5 8rtl/junction_controller.v
-Z6 Frtl/junction_controller.v
-!i122 90
+8rtl/junction_controller.v
+Frtl/junction_controller.v
+!i122 98
 L0 4 191
 R3
 r1
 !s85 0
 31
-!s108 1793122883.000000
-Z7 !s107 rtl/junction_controller.v|
-Z8 !s90 -reportprogress|300|rtl/junction_controller.v|
+!s108 1793127915.000000
+!s107 rtl/junction_controller.v|
+!s90 -reportprogress|300|rtl/junction_controller.v|
 !i113 1
 R4
 vml_timing_predictor
-!s110 1793122836
+!s110 1793127462
 !i10b 1
 !s100 =zi5JBQ]VFGQb22G>jIG<3
 R1
@@ -152,13 +152,13 @@ R0
 w1793122472
 8rtl/ml_timing_predictor.v
 Frtl/ml_timing_predictor.v
-!i122 88
+!i122 95
 L0 2 64
 R3
 r1
 !s85 0
 31
-!s108 1793122836.000000
+!s108 1793127462.000000
 !s107 rtl/ml_timing_predictor.v|
 !s90 -reportprogress|300|rtl/ml_timing_predictor.v|
 !i113 1
@@ -296,25 +296,25 @@ r1
 !i113 1
 R4
 vtb_junction_controller
-!s110 1792567316
+!s110 1793127920
 !i10b 1
-!s100 LkY2?zbgJ5W[n4Q88SN[c0
+!s100 `@L51Oh@gWJJD9jPRWAf60
 R1
-Ij]G0D]?<;9Z]GdBMhG:EJ3
+I:Q<VIFW?<RzeL5Ig3jeBU0
 R2
 R0
-w1792566861
-R5
-R6
-!i122 18
-Z9 L0 4 126
+w1793127904
+8testbench/junction_controller_tb.v
+Ftestbench/junction_controller_tb.v
+!i122 99
+L0 4 112
 R3
 r1
 !s85 0
 31
-!s108 1792567316.000000
-R7
-R8
+!s108 1793127920.000000
+!s107 testbench/junction_controller_tb.v|
+!s90 -reportprogress|300|testbench/junction_controller_tb.v|
 !i113 1
 R4
 vtb_ml_timing_predictor
@@ -373,7 +373,7 @@ w1792600582
 8testbench/ped_arbiter_fairness_tb.v
 Ftestbench/ped_arbiter_fairness_tb.v
 !i122 72
-R9
+L0 4 126
 R3
 r1
 !s85 0
