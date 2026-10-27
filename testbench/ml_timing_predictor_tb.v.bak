@@ -1,0 +1,70 @@
+
+`timescale 1ns/1ps
+
+module tb_ml_timing_predictor;
+
+    reg [2:0] density_A_NS;
+    reg [2:0] density_A_EW;
+
+    wire [3:0] green_duration;
+    wire [1:0] timing_class;
+
+    integer errors;
+
+    ml_timing_predictor dut (
+        .density_A_NS(density_A_NS),
+        .density_A_EW(density_A_EW),
+        .green_duration(green_duration),
+        .timing_class(timing_class)
+    );
+
+    task check_result;
+        input [2:0] ns;
+        input [2:0] ew;
+        input [1:0] expected_class;
+        input [3:0] expected_duration;
+        begin
+            density_A_NS = ns;
+            density_A_EW = ew;
+            #10;
+
+            if (timing_class !== expected_class ||
+                green_duration !== expected_duration) begin
+                $display(
+                    "FAIL: NS=%0d EW=%0d class=%b duration=%0d",
+                    ns, ew, timing_class, green_duration
+                );
+                errors = errors + 1;
+            end
+            else 
+            begin
+                $display(
+                    "PASS: NS=%0d EW=%0d class=%b duration=%0d",
+                    ns, ew, timing_class, green_duration
+                );
+            end
+        end
+    endtask
+
+    initial begin
+        errors = 0;
+
+        check_result(0, 0, 2'b00, 4'd5);
+        check_result(1, 7, 2'b01, 4'd8);
+        check_result(2, 2, 2'b00, 4'd5);
+        check_result(3, 4, 2'b01, 4'd8);
+        check_result(4, 4, 2'b10, 4'd12);
+        check_result(5, 2, 2'b01, 4'd8);
+        check_result(5, 3, 2'b10, 4'd12);
+        check_result(6, 0, 2'b10, 4'd12);
+        check_result(7, 7, 2'b10, 4'd12);
+
+        if (errors == 0)
+            $display("ALL ML PREDICTOR TESTS PASSED");
+        else
+            $display("ML PREDICTOR TESTS FAILED: %0d errors", errors);
+
+        $finish;
+    end
+
+endmodule

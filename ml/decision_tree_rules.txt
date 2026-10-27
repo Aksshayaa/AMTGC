@@ -1,0 +1,28 @@
+|--- density_A_NS <= 4.50
+|   |--- density_A_NS <= 1.50
+|   |   |--- density_A_EW <= 6.50
+|   |   |   |--- class: SHORT
+|   |   |--- density_A_EW >  6.50
+|   |   |   |--- density_A_NS <= 0.50
+|   |   |   |   |--- class: SHORT
+|   |   |   |--- density_A_NS >  0.50
+|   |   |   |   |--- class: MEDIUM
+|   |--- density_A_NS >  1.50
+|   |   |--- density_A_EW <= 3.50
+|   |   |   |--- density_A_NS <= 2.50
+|   |   |   |   |--- class: SHORT
+|   |   |   |--- density_A_NS >  2.50
+|   |   |   |   |--- class: MEDIUM
+|   |   |--- density_A_EW >  3.50
+|   |   |   |--- density_A_NS <= 3.50
+|   |   |   |   |--- class: MEDIUM
+|   |   |   |--- density_A_NS >  3.50
+|   |   |   |   |--- class: LONG
+|--- density_A_NS >  4.50
+|   |--- density_A_NS <= 5.50
+|   |   |--- density_A_EW <= 2.50
+|   |   |   |--- class: MEDIUM
+|   |   |--- density_A_EW >  2.50
+|   |   |   |--- class: LONG
+|   |--- density_A_NS >  5.50
+|   |   |--- class: LONG

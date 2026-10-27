@@ -1,0 +1,233 @@
+
+`timescale 1ns/1ps
+
+module tb_pedestrian_integration;
+
+    reg clk, reset, emergency_override;
+    reg [2:0] density_A_NS, density_A_EW;
+    reg [2:0] density_B_NS, density_B_EW;
+    reg ped_req_A, ped_req_B;
+    reg ped_done_A, ped_done_B;
+
+    wire A_ns_red, A_ns_yellow, A_ns_green;
+    wire A_ew_red, A_ew_yellow, A_ew_green;
+    wire B_ns_red, B_ns_yellow, B_ns_green;
+    wire B_ew_red, B_ew_yellow, B_ew_green;
+    wire A_ns_green_start, B_ns_green_permit;
+    wire ped_grant_A, ped_grant_B;
+
+    integer errors;
+    integer grants_A;
+    integer grants_B;
+
+    amtgc_top dut (
+        .clk(clk),
+        .reset(reset),
+        .emergency_override(emergency_override),
+
+        .density_A_NS(density_A_NS),
+        .density_A_EW(density_A_EW),
+        .density_B_NS(density_B_NS),
+        .density_B_EW(density_B_EW),
+
+        .ped_req_A(ped_req_A),
+        .ped_req_B(ped_req_B),
+        .ped_done_A(ped_done_A),
+        .ped_done_B(ped_done_B),
+
+        .A_ns_red(A_ns_red),
+        .A_ns_yellow(A_ns_yellow),
+        .A_ns_green(A_ns_green),
+        .A_ew_red(A_ew_red),
+        .A_ew_yellow(A_ew_yellow),
+        .A_ew_green(A_ew_green),
+
+        .B_ns_red(B_ns_red),
+        .B_ns_yellow(B_ns_yellow),
+        .B_ns_green(B_ns_green),
+        .B_ew_red(B_ew_red),
+        .B_ew_yellow(B_ew_yellow),
+        .B_ew_green(B_ew_green),
+
+        .A_ns_green_start(A_ns_green_start),
+        .B_ns_green_permit(B_ns_green_permit),
+        .ped_grant_A(ped_grant_A),
+        .ped_grant_B(ped_grant_B)
+    );
+
+    initial clk = 0;
+    always #5 clk = ~clk;
+
+    // Check that only one pedestrian crossing is granted
+    // and all vehicle lights are red during service.
+    always @(negedge clk) begin
+        if (!reset) begin
+            if (ped_grant_A && ped_grant_B) begin
+                $display("FAIL: Both pedestrian grants active");
+                errors = errors + 1;
+            end
+
+            if (ped_grant_A || ped_grant_B) begin
+                if (!(A_ns_red && A_ew_red &&
+                      B_ns_red && B_ew_red &&
+                      !A_ns_green && !A_ew_green &&
+                      !B_ns_green && !B_ew_green &&
+                      !A_ns_yellow && !A_ew_yellow &&
+                      !B_ns_yellow && !B_ew_yellow)) begin
+                    $display("FAIL: Vehicle lights not all-red during crossing");
+                    errors = errors + 1;
+                end
+            end
+
+            if (emergency_override &&
+                !(A_ns_red && A_ew_red && B_ns_red && B_ew_red &&
+                  !A_ns_green && !A_ew_green &&
+                  !B_ns_green && !B_ew_green)) begin
+                $display("FAIL: Emergency all-red condition");
+                errors = errors + 1;
+            end
+        end
+    end
+
+    // Count grants on clock edges.
+    always @(posedge clk) begin
+        if (reset) begin
+            grants_A = 0;
+            grants_B = 0;
+        end
+        else begin
+            if (ped_grant_A && !ped_grant_B)
+                grants_A = grants_A + 1;
+            if (ped_grant_B && !ped_grant_A)
+                grants_B = grants_B + 1;
+        end
+    end
+
+    initial begin
+        errors = 0;
+        grants_A = 0;
+        grants_B = 0;
+
+        reset = 1;
+        emergency_override = 0;
+
+        density_A_NS = 3'd2;
+        density_A_EW = 3'd2;
+        density_B_NS = 3'd2;
+        density_B_EW = 3'd2;
+
+        ped_req_A = 0;
+        ped_req_B = 0;
+        ped_done_A = 0;
+        ped_done_B = 0;
+
+        repeat (3) @(negedge clk);
+        reset = 0;
+
+        // Test A-only request and service completion.
+        @(negedge clk);
+        ped_req_A = 1;
+
+        wait (ped_grant_A == 1);
+        $display("PASS: Junction A received pedestrian grant");
+
+        repeat (3) @(negedge clk);
+        ped_done_A = 1;
+        @(negedge clk);
+        ped_done_A = 0;
+        ped_req_A = 0;
+
+        // Test B-only request and service completion.
+        repeat (2) @(negedge clk);
+        ped_req_B = 1;
+
+        wait (ped_grant_B == 1);
+        $display("PASS: Junction B received pedestrian grant");
+
+        repeat (3) @(negedge clk);
+        ped_done_B = 1;
+        @(negedge clk);
+        ped_done_B = 0;
+        ped_req_B = 0;
+
+        // Simultaneous requests: both should be served
+        // in succession when each completion is signalled.
+        repeat (2) @(negedge clk);
+        ped_req_A = 1;
+        ped_req_B = 1;
+
+        wait (ped_grant_A || ped_grant_B);
+
+        if (ped_grant_A)
+            $display("INFO: Simultaneous request winner: A");
+        else
+            $display("INFO: Simultaneous request winner: B");
+
+        repeat (2) @(negedge clk);
+
+        if (ped_grant_A)
+            ped_done_A = 1;
+        else
+            ped_done_B = 1;
+
+        @(negedge clk);
+        ped_done_A = 0;
+        ped_done_B = 0;
+
+        // Wait for the other requested crossing.
+        wait ((ped_grant_A || ped_grant_B));
+
+        if (ped_grant_A)
+            $display("PASS: Next crossing grant is A");
+        else
+            $display("PASS: Next crossing grant is B");
+
+        repeat (2) @(negedge clk);
+        if (ped_grant_A)
+            ped_done_A = 1;
+        else
+            ped_done_B = 1;
+
+        @(negedge clk);
+        ped_done_A = 0;
+        ped_done_B = 0;
+        ped_req_A = 0;
+        ped_req_B = 0;
+
+        // Emergency must suppress pedestrian grants.
+        repeat (2) @(negedge clk);
+        ped_req_A = 1;
+        wait (ped_grant_A || ped_grant_B);
+
+        emergency_override = 1;
+        #1;
+
+        if (!ped_grant_A && !ped_grant_B)
+            $display("PASS: Emergency suppresses pedestrian grants");
+        else begin
+            $display("FAIL: Emergency did not suppress grants");
+            errors = errors + 1;
+        end
+
+        repeat (2) @(negedge clk);
+        emergency_override = 0;
+        ped_req_A = 0;
+
+        repeat (5) @(negedge clk);
+
+        if (errors == 0)
+            $display("ALL PEDESTRIAN INTEGRATION TESTS PASSED");
+        else
+            $display("PEDESTRIAN INTEGRATION TESTS FAILED: %0d errors",
+                     errors);
+
+        $finish;
+    end
+
+    initial begin
+        #10000;
+        $display("FAIL: Pedestrian integration test timeout");
+        $finish;
+    end
+
+endmodule
