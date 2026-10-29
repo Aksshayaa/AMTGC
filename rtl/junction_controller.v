@@ -72,10 +72,12 @@ module junction_controller #(
             ns_green_start <= 0;
 
             case (state)
-                ALL_RED_INIT: begin
+                ALL_RED_INIT:
+                 begin
                     if (phase_count < ALL_RED_CYCLES)
                         phase_count <= phase_count + 1'b1;
-                    else if (ns_green_enable) begin
+                    else if (ns_green_enable)
+                     begin
                         state          <= NS_GREEN_ST;
                         phase_count    <= 0;
                         phase_duration <= ns_duration;
@@ -83,17 +85,20 @@ module junction_controller #(
                     end
                 end
 
-                NS_GREEN_ST: begin
+                NS_GREEN_ST: 
+                begin
                     if (phase_count < phase_duration - 1'b1)
                         phase_count <= phase_count + 1'b1;
-                    else begin
+                    else
+                     begin
                         state          <= NS_YELLOW_ST;
                         phase_count    <= 0;
                         phase_duration <= YELLOW_CYCLES;
                     end
                 end
 
-                NS_YELLOW_ST: begin
+                NS_YELLOW_ST:
+                 begin
                     if (phase_count < phase_duration - 1'b1)
                         phase_count <= phase_count + 1'b1;
                     else begin
@@ -103,7 +108,8 @@ module junction_controller #(
                     end
                 end
 
-                RED_TO_EW: begin
+                RED_TO_EW:
+                 begin
                     if (phase_count < phase_duration)
                         phase_count <= phase_count + 1'b1;
                     else begin
@@ -113,7 +119,8 @@ module junction_controller #(
                     end
                 end
 
-                EW_GREEN_ST: begin
+                EW_GREEN_ST: 
+                begin
                     if (phase_count < phase_duration - 1'b1)
                         phase_count <= phase_count + 1'b1;
                     else begin
@@ -123,7 +130,8 @@ module junction_controller #(
                     end
                 end
 
-                EW_YELLOW_ST: begin
+                EW_YELLOW_ST: 
+                begin
                     if (phase_count < phase_duration - 1'b1)
                         phase_count <= phase_count + 1'b1;
                     else begin
@@ -133,7 +141,8 @@ module junction_controller #(
                     end
                 end
 
-                RED_TO_NS: begin
+                RED_TO_NS: 
+                begin
                     if (phase_count < phase_duration)
                         phase_count <= phase_count + 1'b1;
                     else if (ns_green_enable) begin
@@ -144,7 +153,8 @@ module junction_controller #(
                     end
                 end
 
-                default: begin
+                default: 
+                begin
                     state          <= ALL_RED_INIT;
                     phase_count    <= 0;
                     phase_duration <= ALL_RED_CYCLES;
@@ -154,7 +164,8 @@ module junction_controller #(
         end
     end
 
-    always @(*) begin
+    always @(*)
+     begin
         ns_red    = 1'b1;
         ns_yellow = 1'b0;
         ns_green  = 1'b0;
@@ -162,29 +173,35 @@ module junction_controller #(
         ew_yellow = 1'b0;
         ew_green  = 1'b0;
 
-        if (!emergency_override && !pedestrian_hold) begin
+        if (!emergency_override && !pedestrian_hold) 
+        begin
             case (state)
-                NS_GREEN_ST: begin
+                NS_GREEN_ST: 
+                begin
                     ns_red   = 1'b0;
                     ns_green = 1'b1;
                 end
 
-                NS_YELLOW_ST: begin
+                NS_YELLOW_ST: 
+                begin
                     ns_red    = 1'b0;
                     ns_yellow = 1'b1;
                 end
 
-                EW_GREEN_ST: begin
+                EW_GREEN_ST: 
+                begin
                     ew_red   = 1'b0;
                     ew_green = 1'b1;
                 end
 
-                EW_YELLOW_ST: begin
+                EW_YELLOW_ST:
+                 begin
                     ew_red    = 1'b0;
                     ew_yellow = 1'b1;
                 end
 
-                default: begin
+                default:
+                 begin
                     // Both directions remain red.
                 end
             endcase
