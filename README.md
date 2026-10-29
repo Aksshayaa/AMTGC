@@ -1,9 +1,10 @@
 # AMTGC
+
 ## AI-Based Adaptive Multi-Junction Traffic Grid Controller
 
 [![Verilog](https://img.shields.io/badge/Language-Verilog-5C6BC0?style=for-the-badge)]()
-[![ModelSim](https://img.shields.io/badge/Tool-ModelSim%20Intel%20FPGA%202020.1-1E90FF?style=for-the-badge)]()
-[![RTL](https://img.shields.io/badge/Design-RTL%20FSM-2E8B57?style=for-the-badge)]()
+[![ModelSim](<https://img.shields.io/badge/Tool-ModelSim%20Intel%20FPGA%202020.1-1E90FF?style=for-the-badge>)]()
+[![RTL](<https://img.shields.io/badge/Design-RTL%20FSM-2E8B57?style=for-the-badge>)]()
 
 AMTGC is a Verilog RTL traffic-signal controller for two connected four-way junctions. It combines:
 
@@ -42,14 +43,14 @@ It is a simulation-verified RTL design exercise. It is **not** a synthesised, ha
 
 ## Modules
 
-| Module | File | Responsibility |
-| --- | --- | --- |
-| `amtgc_top` | `rtl/amtgc_top.v` | Integration; emergency/pedestrian output masking |
-| `junction_controller` | `rtl/junction_controller.v` | 7-state phase FSM, phase counter, `ns_green_start` and `b_ready` |
-| `ml_timing_predictor` | `rtl/ml_timing_predictor.v` | Combinational decision tree: density → SHORT 5 / MEDIUM 8 / LONG 12 cycles |
+| Module                     | File                             | Responsibility                                                                                         |
+| -------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `amtgc_top`              | `rtl/amtgc_top.v`              | Integration; emergency/pedestrian output masking                                                       |
+| `junction_controller`    | `rtl/junction_controller.v`    | 7-state phase FSM, phase counter, `ns_green_start` and `b_ready`                                   |
+| `ml_timing_predictor`    | `rtl/ml_timing_predictor.v`    | Combinational decision tree: density → SHORT 5 / MEDIUM 8 / LONG 12 cycles                            |
 | `green_wave_coordinator` | `rtl/green_wave_coordinator.v` | Counts `WAVE_DELAY − 3` cycles after A's start, then issues a one-cycle permit to B when B is ready |
-| `ped_arbiter` | `rtl/ped_arbiter.v` | Edge-detected, latched requests; `IDLE` / `SERVING_A` / `SERVING_B`; alternating priority |
-| `generic_timer` | `rtl/generic_timer.v` | Reusable start/done timer (unit-tested; **not instantiated** in `amtgc_top`) |
+| `ped_arbiter`            | `rtl/ped_arbiter.v`            | Edge-detected, latched requests; `IDLE` / `SERVING_A` / `SERVING_B`; alternating priority        |
+| `generic_timer`          | `rtl/generic_timer.v`          | Reusable start/done timer (unit-tested; **not instantiated** in `amtgc_top`)                   |
 
 The decision tree is recorded in `ml/decision_tree_rules.txt`, and the RTL implements it exactly. Against `ml/traffic_training_data.csv` (4 096 rows), it agrees on **95.31 %** of rows. The three disagreeing (NS, EW) cells are listed in report §4.1.
 
@@ -111,20 +112,20 @@ run -all
 
 ## Testbenches
 
-| File | Top module | What it checks |
-| --- | --- | --- |
-| `generic_timer_tb.v` | `tb_generic_timer` | 4-cycle timer completes |
-| `ml_timing_sweep_tb.v` | `ml_timing_sweep_tb` | All 64 density pairs → valid class and matching duration |
-| `ml_timing_predictor_tb.v` | — | **Empty file** (BUG-01). The directed version is in the `.bak` |
-| `junction_controller_tb.v` | `tb_junction_controller` | Full 7-state cycle; no conflicting greens; emergency all-red; recovery |
-| `green_wave_coordinator_tb.v` | `tb_green_wave_coordinator` | Permit only when B is ready; one-cycle pulse; emergency cancels |
-| `ped_arbiter_tb.v` | `tb_ped_arbiter` | A, B, simultaneous, emergency (see BUG-03) |
-| `ped_arbiter_fairness_tb.v` | `tb_ped_arbiter_fairness` | Both simultaneous requests served over two rounds |
-| `amtgc_top_tb.v` | `tb_amtgc_top` | A starts, B's NS green follows, emergency all-red, no conflicts |
-| `green_wave_timing_tb.v` | `tb_green_wave_timing` | A-start → B-green offset within 5–6 cycles |
-| `green_wave_density_tb.v` | `green_wave_density_tb` | Offset ≥ 5 cycles for 5 density mixes |
-| `pedestrian_integration_tb.v` | `tb_pedestrian_integration` | All-red during crossings; emergency drops grants |
-| `amtgc_stress_tb.v` | `amtgc_stress_tb` | Emergency in every phase, reset mid-run, repeated emergencies, 100 random densities |
+| File                            | Top module                    | What it checks                                                                      |
+| ------------------------------- | ----------------------------- | ----------------------------------------------------------------------------------- |
+| `generic_timer_tb.v`          | `tb_generic_timer`          | 4-cycle timer completes                                                             |
+| `ml_timing_sweep_tb.v`        | `ml_timing_sweep_tb`        | All 64 density pairs → valid class and matching duration                           |
+| `ml_timing_predictor_tb.v`    | —                            | **Empty file** (BUG-01). The directed version is in the `.bak`              |
+| `junction_controller_tb.v`    | `tb_junction_controller`    | Full 7-state cycle; no conflicting greens; emergency all-red; recovery              |
+| `green_wave_coordinator_tb.v` | `tb_green_wave_coordinator` | Permit only when B is ready; one-cycle pulse; emergency cancels                     |
+| `ped_arbiter_tb.v`            | `tb_ped_arbiter`            | A, B, simultaneous, emergency (see BUG-03)                                          |
+| `ped_arbiter_fairness_tb.v`   | `tb_ped_arbiter_fairness`   | Both simultaneous requests served over two rounds                                   |
+| `amtgc_top_tb.v`              | `tb_amtgc_top`              | A starts, B's NS green follows, emergency all-red, no conflicts                     |
+| `green_wave_timing_tb.v`      | `tb_green_wave_timing`      | A-start → B-green offset within 5–6 cycles                                        |
+| `green_wave_density_tb.v`     | `green_wave_density_tb`     | Offset ≥ 5 cycles for 5 density mixes                                              |
+| `pedestrian_integration_tb.v` | `tb_pedestrian_integration` | All-red during crossings; emergency drops grants                                    |
+| `amtgc_stress_tb.v`           | `amtgc_stress_tb`           | Emergency in every phase, reset mid-run, repeated emergencies, 100 random densities |
 
 ## Expected behaviour
 
@@ -136,21 +137,21 @@ run -all
 
 ## Verification status (honest summary)
 
-| Area | Evidence | Status |
-| --- | --- | --- |
-**ModelSim 2020.1 captures of the final RTL** (28 Oct 2026, in `screenshots/`): predictor sweep 64/64, green-wave density (5 cycles × 5 mixes), pedestrian fairness, pedestrian integration and the stress test all **PASS**.
+| Area                                                                                                                                                                                                                                         | Evidence | Status |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------ |
+| **ModelSim 2020.1 captures of the final RTL** (28 Oct 2026, in `screenshots/`): predictor sweep 64/64, green-wave density (5 cycles × 5 mixes), pedestrian fairness, pedestrian integration and the stress test all **PASS**. |          |        |
 
 Full regression with **Icarus Verilog 13.0** (`bash scripts/run_iverilog.sh`, logs in [`sim_logs/iverilog/`](sim_logs/iverilog/summary.txt)):
 
-| Testbench | Result |
-| --- | --- |
-| `tb_generic_timer`, `ml_timing_sweep_tb` (64/64), `tb_green_wave_coordinator`, `tb_ped_arbiter_fairness`, `tb_amtgc_top`, `tb_pedestrian_integration` | PASS |
-| `tb_green_wave_timing` | PASS: measured A→B delay **5 cycles** |
-| `green_wave_density_tb` | PASS: 5 cycles at all 5 density mixes |
-| `tb_ml_timing_predictor` (run from `.bak`; the `.v` is empty, BUG-01) | PASS, 9/9 |
-| `tb_junction_controller` | PASS: all 7 states, emergency, recovery (bench fixed 28 Oct, BUG-02) |
-| `tb_ped_arbiter` | 2 FAIL: bench checks one edge too early (BUG-03) |
-| `amtgc_stress_tb` | Icarus: 2 FAIL from a testbench race (BUG-06). **ModelSim: PASS** |
+| Testbench                                                                                                                                                         | Result                                                                  |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `tb_generic_timer`, `ml_timing_sweep_tb` (64/64), `tb_green_wave_coordinator`, `tb_ped_arbiter_fairness`, `tb_amtgc_top`, `tb_pedestrian_integration` | PASS                                                                    |
+| `tb_green_wave_timing`                                                                                                                                          | PASS: measured A→B delay **5 cycles**                            |
+| `green_wave_density_tb`                                                                                                                                         | PASS: 5 cycles at all 5 density mixes                                   |
+| `tb_ml_timing_predictor` (run from `.bak`; the `.v` is empty, BUG-01)                                                                                       | PASS, 9/9                                                               |
+| `tb_junction_controller`                                                                                                                                        | PASS: all 7 states, emergency, recovery (bench fixed 28 Oct, BUG-02)    |
+| `tb_ped_arbiter`                                                                                                                                                | 2 FAIL: bench checks one edge too early (BUG-03)                        |
+| `amtgc_stress_tb`                                                                                                                                               | Icarus: 2 FAIL from a testbench race (BUG-06). **ModelSim: PASS** |
 
 ModelSim on the final RTL also confirms **green-wave timing** (`green wave timing final test passed.png`: `measured_delay = 5`, `errors = 0`) and the **junction FSM** (`junction_controller_final test.png`). Two older screenshots, `junction_controller_test.png` and `ped_arbiter test pass.png`, show earlier RTL revisions and are kept for reference. Details are in [`docs/BUG_LOG.md`](docs/BUG_LOG.md).
 
